@@ -1,25 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+// import './App.scss';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import LandingPage from "./pages/landingPage";
+import Home from "./pages/home";
+import SignUp from "./pages/signUp";
+import SingleProject from "./pages/singleProject";
+import SignIn from "./pages/signIn";
+import LogIn from "./pages/logIn";
+import './App.scss';
+
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={ LandingPage } />
+          <Route exact path="/sign-up" component={ SignUp } />
+          <Route exact path="/home/:id" component={ Home } />
+          <Route exact path="/sign-in/:id" component={ SignIn } />
+          <Route exact path="/project/:id" component={ SingleProject } />
+          <Route exact path="/login" component={ LogIn } />
+        </Switch>
+      </Router>
+    </React.Fragment>
   );
 }
 
